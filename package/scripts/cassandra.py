@@ -25,8 +25,9 @@ def cassandra():
 
     Directory([params.log_dir, params.pid_dir, params.conf_dir],
               owner=params.cassandra_user,
-              group=params.user_group
-          )
+              group=params.user_group,
+              create_parents=True
+             )
     configurations = params.config['configurations']['cassandra-site']
 
     File(format("{conf_dir}/cassandra.yaml"),
